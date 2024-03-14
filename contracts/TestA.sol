@@ -2,10 +2,9 @@
 pragma solidity ^0.8.0;
 
 contract TestA {
-
     uint256 public amount;
 
-    constructor(){}
+    constructor() {}
 
     function addInt(uint256 a, uint256 b) public pure returns (uint256) {
         return a + b;
