@@ -2,14 +2,14 @@
 /* global ethers */
 /* eslint prefer-const: "off" */
 const { ethers } = require('hardhat')
-const { getSelectors, FacetCutAction } = require('./libraries/diamond.js')
+const { FacetCutAction } = require('./libraries/diamond.js')
 
 async function deployTestA () {
   // deploy DiamondCutFacet
-  const TestA = await ethers.getContractFactory('TestA')
-  const testA = await TestA.deploy()
-  await testA.deployed()
-  console.log('TestA deployed:', testA.address)
+  // const TestA = await ethers.getContractFactory('TestA')
+  // const testA = await TestA.deploy()
+  // await testA.deployed()
+  // console.log('TestA deployed:', testA.address)
 
   // deploy facets
   console.log('')
@@ -17,10 +17,21 @@ async function deployTestA () {
 
   const cut = []
 
+  // console.log(111)
+  // console.log(getSelectors(testA))
+  // console.log(222)
   cut.push({
-    facetAddress: testA.address,
-    action: FacetCutAction.Add,
-    functionSelectors: getSelectors(testA)
+    facetAddress: '0x7044468172fEcec9BF69cA1c79C24ddD8553D530',
+    action: FacetCutAction.Replace,
+    functionSelectors: [
+      // '0xb9c14577',
+      '0x652db7f3' // add
+      // '0xfabe77b2',
+      // '0xaa8c217c',
+      // '0x057bfcc7', // add
+      // '0xd321fe29',
+      // '0x91ceb0c7' // add
+    ]
   })
 
   // upgrade diamond with facets

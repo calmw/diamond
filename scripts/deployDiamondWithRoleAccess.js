@@ -5,7 +5,6 @@ const { ethers } = require('hardhat')
 const { getSelectors, FacetCutAction } = require('./libraries/diamond.js')
 
 async function deployDiamond () {
-  const contractOwner = ethers.utils.getAddress('0xD7922e3063D717F5e20a50f02b54266430f94Fdb')
 
   // deploy DiamondCutFacet
   const DiamondCutFacet = await ethers.getContractFactory('DiamondCutFacet')
@@ -14,8 +13,8 @@ async function deployDiamond () {
   console.log('DiamondCutFacet deployed:', diamondCutFacet.address)
 
   // deploy Diamond
-  const Diamond = await ethers.getContractFactory('IRoleAccess.sol')
-  const diamond = await Diamond.deploy(contractOwner, diamondCutFacet.address)
+  const Diamond = await ethers.getContractFactory('DiamondWithRoleAccess')
+  const diamond = await Diamond.deploy(diamondCutFacet.address)
   await diamond.deployed()
   console.log('Diamond deployed:', diamond.address)
 
@@ -50,7 +49,7 @@ async function deployDiamond () {
   // upgrade diamond with facets
   console.log('')
   console.log('Diamond Cut:', cut)
-  const diamondCut = await ethers.getContractAt('IDiamondCut', diamond.address)
+  const diamondCut = await ethers.getContractAt('IDiamondCut', diamond.address) // Diamond address
   let tx
   let receipt
   // call to init function

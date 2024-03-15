@@ -6,10 +6,10 @@ const { getSelectors, FacetCutAction } = require('./libraries/diamond.js')
 
 async function deployTestA () {
   // deploy DiamondCutFacet
-  const TestA = await ethers.getContractFactory('TestA')
-  const testA = await TestA.deploy()
-  await testA.deployed()
-  console.log('TestA deployed:', testA.address)
+  const TestB = await ethers.getContractFactory('TestB')
+  const testB = await TestB.deploy()
+  await testB.deployed()
+  console.log('testB deployed:', testB.address)
 
   // deploy facets
   console.log('')
@@ -18,9 +18,9 @@ async function deployTestA () {
   const cut = []
 
   cut.push({
-    facetAddress: testA.address,
+    facetAddress: testB.address,
     action: FacetCutAction.Add,
-    functionSelectors: getSelectors(testA)
+    functionSelectors: getSelectors(testB)
   })
 
   // upgrade diamond with facets
