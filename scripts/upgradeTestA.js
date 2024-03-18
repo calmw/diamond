@@ -17,9 +17,6 @@ async function deployTestA () {
 
   const cut = []
 
-  // console.log(111)
-  // console.log(getSelectors(testA))
-  // console.log(222)
   cut.push({
     facetAddress: '0x7044468172fEcec9BF69cA1c79C24ddD8553D530',
     action: FacetCutAction.Replace,
