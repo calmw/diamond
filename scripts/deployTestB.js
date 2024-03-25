@@ -26,13 +26,13 @@ async function deployTestA () {
   // upgrade diamond with facets
   console.log('')
   console.log('Diamond Cut:', cut)
-  const diamondCut = await ethers.getContractAt('IDiamondCut', '0x4fB55EA66C026aAA8c36C6FBd5837eBF495d6841')
-  const diamondInit = await ethers.getContractAt('DiamondInit', '0x22Ff9ee034868A8a9712f2670C60bc2b4e9e02E3')
+  const diamondCut = await ethers.getContractAt('IDiamondCut', '0xDc8E90199C9947dFe12b68E90e77eF210e4fC645')
+  const diamondInit = await ethers.getContractAt('DiamondInit', '0x07Ea5988E3E1D54a8e72Ae90580967aB2bCe0251')
   let tx
   let receipt
   // call to init function
   let functionCall = diamondInit.interface.encodeFunctionData('init')
-  tx = await diamondCut.diamondCut(cut, '0x22Ff9ee034868A8a9712f2670C60bc2b4e9e02E3', functionCall)
+  tx = await diamondCut.diamondCut(cut, '0x07Ea5988E3E1D54a8e72Ae90580967aB2bCe0251', functionCall)
   console.log('Diamond cut tx: ', tx.hash)
   receipt = await tx.wait()
   if (!receipt.status) {
