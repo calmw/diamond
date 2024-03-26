@@ -3,10 +3,10 @@ const { ethers } = require('hardhat')
 
 async function deployRoleAccess () {
   // deploy DiamondCutFacet
-  const RoleAccess = await ethers.getContractFactory('RoleAccess')
+  const RoleAccess = await ethers.getContractFactory('RoleAccessOld.sol')
   const roleAccess = await RoleAccess.deploy()
   await roleAccess.deployed()
-  console.log('RoleAccess deployed:', roleAccess.address)
+  console.log('RoleAccessOld.sol deployed:', roleAccess.address)
 }
 
 // We recommend this pattern to be able to use async/await everywhere

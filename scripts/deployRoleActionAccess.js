@@ -6,7 +6,7 @@ async function deployRoleAccess () {
   const RoleAccess = await ethers.getContractFactory('RoleActionAccess')
   const roleAccess = await RoleAccess.deploy()
   await roleAccess.deployed()
-  console.log('RoleAccess deployed:', roleAccess.address)
+  console.log('RoleAccessOld.sol deployed:', roleAccess.address)
 }
 
 // We recommend this pattern to be able to use async/await everywhere

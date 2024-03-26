@@ -13,8 +13,7 @@ import {IDiamondCut} from "./interfaces/IDiamondCut.sol";
 import {AccessControl} from "@openzeppelin/contracts/access/AccessControl.sol";
 
 contract DiamondWithRoleAccess is AccessControl {
-    bytes32 public constant GENERAL_ADMIN_ROLE =
-        keccak256("GENERAL_ADMIN_ROLE"); // contract admin
+    bytes32 public constant CONTRACT_ROLE = keccak256("CONTRACT_ROLE"); // impl contract
     bytes32 public constant MANAGER_ROLE = keccak256("MANAGER_ROLE"); // manager
     bytes32 public constant ADMINISTRATOR = keccak256("ADMINISTRATOR"); // administrator
 
